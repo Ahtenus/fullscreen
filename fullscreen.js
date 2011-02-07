@@ -21,7 +21,6 @@ if(index === undefined) {
 		player.attr("height",$(window).height()).attr("width",$(window).width());
 	});
 	var player = $(playerElement[i]).clone();
-	$("body *").remove();
-	player.appendTo("body");
+	$("body").html(player);
 	$(window).resize();
 }
