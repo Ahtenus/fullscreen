@@ -9,7 +9,6 @@ for (i = 0; i < locations.length; i++) {
 	}
 }
 function afterLoad() {
-	console.log(matchString);
 	var player = jQuery(matchString).clone();
 	jQuery("head").html("");
 	jQuery("body").html(player).css("padding","0").css("margin","0");
