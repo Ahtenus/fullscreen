@@ -1,7 +1,3 @@
-var matchString = "embed";
-var locations = ["svtplay.se"];
-var playerElement = ["#playerSwf object"];
-var i;
 if(typeof jQuery === 'undefined') { // Load jQuery unless it's allready present 
 	var s=document.createElement("script"); 
 	s.setAttribute("src","http://code.jquery.com/jquery-1.5.min.js"); 
@@ -12,6 +8,10 @@ function continueWhenjQuery() {
 		setTimeout(continueWhenjQuery,200);
 		return;
 	} else {
+		var matchString = "embed";
+		var locations = ["svtplay.se"];
+		var playerElement = ["#playerSwf object"];
+		var i;
 		for (i = 0; i < locations.length; i++) { // Replace with site specific element if exists
 			if(window.location.host === locations[i]) {
 				matchString = playerElement[i];
@@ -27,7 +27,7 @@ function continueWhenjQuery() {
 			});
 			jQuery(window).resize();
 		} else {
-			alert("Couldn't find any video element");
+			alert("Couldn't find any video elements");
 		}
 	}
 }
