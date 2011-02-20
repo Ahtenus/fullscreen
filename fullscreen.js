@@ -1,17 +1,26 @@
+(function() {
+var elem, player,numel = 0;
 function Resize() {
 	player.setAttribute("width",window.innerWidth);
 	player.setAttribute("height",window.innerHeight);
 }
 if(window.location.host === "svtplay.se") {
-	var elem = document.getElementsByTagName("object");
-	var player = elem[1].cloneNode(true);
+	elem = document.getElementsByTagName("object");
+	numel = 1;
 }
-else {
-	var elem = document.getElementsByTagName("embed");
-	var player = elem[0].cloneNode(true);
+else{
+	elem = document.getElementsByTagName("embed");
+	if(elem.length < 1)
+		elem = document.getElementsByTagName("object");
 }
-document.head.innerHTML = "<style> * { margin: 0 !important; padding: 0 !important; border:0 !important; overflow:hidden;}</style>";
-document.body.innerHTML = "";
-document.body.appendChild(player);
-window.onresize = Resize;
-Resize();
+if(elem.length > 0) {
+	player = elem[numel].cloneNode(true);
+	document.head.innerHTML = "<style> * { margin: 0; padding: 0; border:0; overflow:hidden;}</style>";
+	document.body.innerHTML = "";
+	document.body.appendChild(player);
+	window.onresize = Resize;
+	Resize();
+} else {
+	alert("No video element found");
+}
+})();
