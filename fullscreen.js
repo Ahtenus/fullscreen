@@ -1,4 +1,4 @@
-(function() {
+(function(window,undefined) {
 var elem, player,numel = 0;
 function Resize() {
 	player.setAttribute("width",window.innerWidth);
@@ -10,8 +10,9 @@ if(window.location.host === "svtplay.se") {
 }
 else{
 	elem = document.getElementsByTagName("embed");
-	if(elem.length < 1)
+	if(elem.length < 1) {
 		elem = document.getElementsByTagName("object");
+	}
 }
 if(elem.length > 0) {
 	player = elem[numel].cloneNode(true);
@@ -23,4 +24,4 @@ if(elem.length > 0) {
 } else {
 	alert("No video element found");
 }
-})();
+})(window);
